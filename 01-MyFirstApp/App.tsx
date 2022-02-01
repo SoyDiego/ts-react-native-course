@@ -1,12 +1,8 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import HelloWorldScreen from './src/screens/HelloWorldScreen';
 
 const App = () => {
-  return (
-    <View>
-      <Text>Hello World!</Text>
-    </View>
-  );
+  return <HelloWorldScreen />;
 };
 
 export default App;
