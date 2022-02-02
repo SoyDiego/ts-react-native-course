@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, TouchableNativeFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import React from 'react';
 
 interface FabProps {
@@ -8,21 +15,41 @@ interface FabProps {
 }
 
 const Fab = ({title, position = 'br', onPress}: FabProps) => {
-  return (
-    <View
-      style={[
-        styles.fabLocation,
-        position === 'br' ? styles.right : styles.left,
-      ]}>
-      <TouchableNativeFeedback
+  const ios = () => {
+    return (
+      <TouchableOpacity
         onPress={onPress}
-        background={TouchableNativeFeedback.Ripple('white', false, 30)}>
+        activeOpacity={0.8}
+        style={[
+          styles.fabLocation,
+          position === 'br' ? styles.right : styles.left,
+        ]}>
         <View style={styles.fab}>
           <Text style={styles.fabText}>{title}</Text>
         </View>
-      </TouchableNativeFeedback>
-    </View>
-  );
+      </TouchableOpacity>
+    );
+  };
+
+  const android = () => {
+    return (
+      <View
+        style={[
+          styles.fabLocation,
+          position === 'br' ? styles.right : styles.left,
+        ]}>
+        <TouchableNativeFeedback
+          onPress={onPress}
+          background={TouchableNativeFeedback.Ripple('white', false, 30)}>
+          <View style={styles.fab}>
+            <Text style={styles.fabText}>{title}</Text>
+          </View>
+        </TouchableNativeFeedback>
+      </View>
+    );
+  };
+
+  return Platform.OS === 'ios' ? ios() : android();
 };
 
 export default Fab;
