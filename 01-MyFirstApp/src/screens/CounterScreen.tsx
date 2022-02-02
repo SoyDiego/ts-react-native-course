@@ -1,5 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import Fab from '../components/Fab';
 
