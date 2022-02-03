@@ -8,7 +8,7 @@ import {
 import React from 'react';
 
 const DimensionsScreen = () => {
-//   const {width, height} = Dimensions.get('window');
+  //   const {width, height} = Dimensions.get('window');
 
   const {width, height} = useWindowDimensions();
 
