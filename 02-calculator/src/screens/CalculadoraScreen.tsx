@@ -15,6 +15,32 @@ const CalculadoraScreen = () => {
         <ButtonCalc text="del" color="#9B9B9B" />
         <ButtonCalc text="/" color="#FF9427" />
       </View>
+
+      <View style={styles.row}>
+        <ButtonCalc text="7" />
+        <ButtonCalc text="8" />
+        <ButtonCalc text="9" />
+        <ButtonCalc text="X" color="#FF9427" />
+      </View>
+
+      <View style={styles.row}>
+        <ButtonCalc text="4" />
+        <ButtonCalc text="5" />
+        <ButtonCalc text="6" />
+        <ButtonCalc text="-" color="#FF9427" />
+      </View>
+
+      <View style={styles.row}>
+        <ButtonCalc text="1" />
+        <ButtonCalc text="2" />
+        <ButtonCalc text="3" />
+        <ButtonCalc text="+" color="#FF9427" />
+      </View>
+      <View style={styles.row}>
+        <ButtonCalc text="0" width />
+        <ButtonCalc text="." />
+        <ButtonCalc text="=" color="#FF9427" />
+      </View>
     </View>
   );
 };
