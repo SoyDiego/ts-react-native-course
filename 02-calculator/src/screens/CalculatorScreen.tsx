@@ -1,14 +1,24 @@
 import {View, Text} from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {styles} from '../theme/appTheme';
 import ButtonCalc from '../components/ButtonCalc';
 
-const CalculadoraScreen = () => {
+enum Operators {
+  addition,
+  substract,
+  multiply,
+  divide,
+}
+
+const CalculatorScreen = () => {
   const [baseNumber, setBaseNumber] = useState('100');
   const [previousNumber, setPreviousNumber] = useState('0');
 
+  const lastOperation = useRef<Operators>();
+
   const reset = () => {
     setBaseNumber('0');
+    setPreviousNumber('0');
   };
 
   const buildNumber = (number: string) => {
@@ -60,9 +70,39 @@ const CalculadoraScreen = () => {
     }
   };
 
+  const changeNumberToPrevious = () => {
+    if (baseNumber.endsWith('.')) {
+      setPreviousNumber(baseNumber.slice(0, -1));
+    } else {
+      setPreviousNumber(baseNumber);
+    }
+
+    setBaseNumber('0');
+  };
+
+  const btnDivide = () => {
+    changeNumberToPrevious();
+    lastOperation.current = Operators.divide;
+  };
+
+  const btnMultiply = () => {
+    changeNumberToPrevious();
+    lastOperation.current = Operators.multiply;
+  };
+  const btnSubstract = () => {
+    changeNumberToPrevious();
+    lastOperation.current = Operators.substract;
+  };
+  const btnAddition = () => {
+    changeNumberToPrevious();
+    lastOperation.current = Operators.addition;
+  };
+
   return (
     <View style={styles.calculatorContainer}>
-      <Text style={styles.smallResult}>{previousNumber}</Text>
+      {previousNumber !== '0' && (
+        <Text style={styles.smallResult}>{previousNumber}</Text>
+      )}
       <Text style={styles.result} numberOfLines={1} adjustsFontSizeToFit>
         {baseNumber}
       </Text>
@@ -71,28 +111,28 @@ const CalculadoraScreen = () => {
         <ButtonCalc text="C" color="#9B9B9B" action={reset} />
         <ButtonCalc text="+/-" color="#9B9B9B" action={positiveNegative} />
         <ButtonCalc text="del" color="#9B9B9B" action={deleteLastNumber} />
-        <ButtonCalc text="/" color="#FF9427" action={reset} />
+        <ButtonCalc text="/" color="#FF9427" action={btnDivide} />
       </View>
 
       <View style={styles.row}>
         <ButtonCalc text="7" action={buildNumber} />
         <ButtonCalc text="8" action={buildNumber} />
         <ButtonCalc text="9" action={buildNumber} />
-        <ButtonCalc text="X" color="#FF9427" action={reset} />
+        <ButtonCalc text="X" color="#FF9427" action={btnMultiply} />
       </View>
 
       <View style={styles.row}>
         <ButtonCalc text="4" action={buildNumber} />
         <ButtonCalc text="5" action={buildNumber} />
         <ButtonCalc text="6" action={buildNumber} />
-        <ButtonCalc text="-" color="#FF9427" action={reset} />
+        <ButtonCalc text="-" color="#FF9427" action={btnSubstract} />
       </View>
 
       <View style={styles.row}>
         <ButtonCalc text="1" action={buildNumber} />
         <ButtonCalc text="2" action={buildNumber} />
         <ButtonCalc text="3" action={buildNumber} />
-        <ButtonCalc text="+" color="#FF9427" action={reset} />
+        <ButtonCalc text="+" color="#FF9427" action={btnAddition} />
       </View>
       <View style={styles.row}>
         <ButtonCalc text="0" action={buildNumber} width />
@@ -103,4 +143,4 @@ const CalculadoraScreen = () => {
   );
 };
 
-export default CalculadoraScreen;
+export default CalculatorScreen;
