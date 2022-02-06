@@ -12,10 +12,36 @@ const CalculadoraScreen = () => {
   };
 
   const buildNumber = (number: string) => {
-    if (baseNumber === '0') {
-      setBaseNumber(number);
+    //Don't accept double point (.)
+    if (number === '.' && baseNumber.includes('.')) return;
+
+    if (baseNumber.startsWith('0') || baseNumber.startsWith('-0')) {
+      // Decimal point
+      if (number === '.') {
+        setBaseNumber(baseNumber + number);
+      }
+      // Evaluate if there is other 0 and there is a decimal point
+      else if (number === '0' && baseNumber.includes('.')) {
+        setBaseNumber(baseNumber + number);
+        //Evalute if is not 0 and  is not a decimal point
+      } else if (number !== '0' && !baseNumber.includes('.')) {
+        setBaseNumber(number);
+        // Deny to add more than one 0
+      } else if (number === '0' && !baseNumber.includes('.')) {
+        setBaseNumber(number);
+      } else {
+        setBaseNumber(baseNumber + number);
+      }
     } else {
       setBaseNumber(baseNumber + number);
+    }
+  };
+
+  const positiveNegative = () => {
+    if (baseNumber.includes('-')) {
+      setBaseNumber(baseNumber.replace('-', ''));
+    } else {
+      setBaseNumber('-' + baseNumber);
     }
   };
 
@@ -28,7 +54,7 @@ const CalculadoraScreen = () => {
 
       <View style={styles.row}>
         <ButtonCalc text="C" color="#9B9B9B" action={reset} />
-        <ButtonCalc text="+/-" color="#9B9B9B" action={reset} />
+        <ButtonCalc text="+/-" color="#9B9B9B" action={positiveNegative} />
         <ButtonCalc text="del" color="#9B9B9B" action={reset} />
         <ButtonCalc text="/" color="#FF9427" action={reset} />
       </View>
