@@ -6,15 +6,17 @@ interface IButtonCalcProps {
   text: string;
   color?: string;
   width?: boolean;
+  action: (number: string) => void;
 }
 
 const ButtonCalc = ({
   text,
   color = '#2D2D2D',
   width = false,
+  action,
 }: IButtonCalcProps) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => action(text)}>
       <View
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
