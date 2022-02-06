@@ -45,6 +45,21 @@ const CalculadoraScreen = () => {
     }
   };
 
+  const deleteLastNumber = () => {
+    let negative = '';
+    let tempNumber = baseNumber;
+    if (baseNumber.includes('-')) {
+      negative = '-';
+      tempNumber = baseNumber.replace('-', '');
+    }
+
+    if (tempNumber.length === 1) {
+      setBaseNumber('0');
+    } else {
+      setBaseNumber(negative + tempNumber.slice(0, -1));
+    }
+  };
+
   return (
     <View style={styles.calculatorContainer}>
       <Text style={styles.smallResult}>{previousNumber}</Text>
@@ -55,7 +70,7 @@ const CalculadoraScreen = () => {
       <View style={styles.row}>
         <ButtonCalc text="C" color="#9B9B9B" action={reset} />
         <ButtonCalc text="+/-" color="#9B9B9B" action={positiveNegative} />
-        <ButtonCalc text="del" color="#9B9B9B" action={reset} />
+        <ButtonCalc text="del" color="#9B9B9B" action={deleteLastNumber} />
         <ButtonCalc text="/" color="#FF9427" action={reset} />
       </View>
 
