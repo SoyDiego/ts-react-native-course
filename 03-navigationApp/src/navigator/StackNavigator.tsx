@@ -1,11 +1,16 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Page1Screen from '../screens/Page1Screen';
 import Page2Screen from '../screens/Page2Screen';
 import Page3Screen from '../screens/Page3Screen';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Page1Screen: undefined;
+  Page2Screen: undefined;
+  Page3Screen: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
   return (
