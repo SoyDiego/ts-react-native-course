@@ -7,4 +7,19 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 30,
   },
+  bigButton: {
+    width: 100,
+    height: 100,
+    borderRadius: 20,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 10,
+    marginTop: 20,
+  },
+  bigButtonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });

@@ -21,14 +21,28 @@ const Page1Screen = ({navigation}: Props) => {
       />
 
       <Text>Navigate with Arguments</Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('PersonScreen', {
-            name: 'Pedro',
-          } as any);
-        }}>
-        <Text>Pedro</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          style={{...styles.bigButton, backgroundColor: '#5856d6'}}
+          onPress={() => {
+            navigation.navigate('PersonScreen', {
+              id: 1,
+              name: 'Pedro',
+            } as any);
+          }}>
+          <Text style={styles.bigButtonText}>Pedro</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{...styles.bigButton, backgroundColor: '#FF9427'}}
+          onPress={() => {
+            navigation.navigate('PersonScreen', {
+              id: 2,
+              name: 'María',
+            } as any);
+          }}>
+          <Text style={styles.bigButtonText}>María</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

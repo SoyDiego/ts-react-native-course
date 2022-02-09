@@ -9,7 +9,7 @@ export type RootStackParamList = {
   Page1Screen: undefined;
   Page2Screen: undefined;
   Page3Screen: undefined;
-  PersonScreen: undefined;
+  PersonScreen: {id: number; name: string};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
