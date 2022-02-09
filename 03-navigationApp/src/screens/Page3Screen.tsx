@@ -10,7 +10,7 @@ interface Props extends NativeStackScreenProps<RootStackParamList> {}
 const Page3Screen = ({navigation}: Props) => {
   return (
     <View style={styles.globalMargin}>
-      <Text>Page3Screen</Text>
+      <Text style={styles.title}>Page3Screen</Text>
       <Button
         title="Go back!"
         onPress={() => navigation.dispatch(StackActions.pop())}
