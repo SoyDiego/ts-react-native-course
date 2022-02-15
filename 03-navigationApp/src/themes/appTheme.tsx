@@ -32,4 +32,26 @@ export const styles = StyleSheet.create({
     borderRadius: 75,
     borderWidth: 2,
   },
+
+  menuContainer: {
+    marginVertical: 50,
+    marginHorizontal: 50,
+    alignItems: 'center',
+  },
+
+  buttonMenu: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    marginVertical: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  textMenu: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
 });
