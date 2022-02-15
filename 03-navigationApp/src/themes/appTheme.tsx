@@ -53,5 +53,6 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginVertical: 10,
+    color: 'black',
   },
 });
