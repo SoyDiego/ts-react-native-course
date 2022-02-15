@@ -15,12 +15,7 @@ const Page1Screen = ({navigation}: Props) => {
         onPress={() => navigation.navigate('Page2Screen')}
       />
 
-      <Button
-        title="Go to Person Screen"
-        onPress={() => navigation.navigate('PersonScreen')}
-      />
-
-      <Text>Navigate with Arguments</Text>
+      <Text style={{marginTop: 20, fontSize: 18}}>Navigate with Arguments</Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           style={{...styles.bigButton, backgroundColor: '#5856d6'}}
