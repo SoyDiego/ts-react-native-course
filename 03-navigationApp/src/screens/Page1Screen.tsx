@@ -3,6 +3,7 @@ import React from 'react';
 import {View, Text, Button, TouchableOpacity} from 'react-native';
 import {RootStackParamList} from '../navigator/StackNavigator';
 import {styles} from '../themes/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props extends NativeStackScreenProps<RootStackParamList> {}
 
@@ -25,6 +26,7 @@ const Page1Screen = ({navigation}: Props) => {
               name: 'Pedro',
             } as any);
           }}>
+          <Icon name="man-outline" size={30} color="white" />
           <Text style={styles.bigButtonText}>Pedro</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -35,6 +37,7 @@ const Page1Screen = ({navigation}: Props) => {
               name: 'María',
             } as any);
           }}>
+          <Icon name="woman-outline" size={30} color="white" />
           <Text style={styles.bigButtonText}>María</Text>
         </TouchableOpacity>
       </View>

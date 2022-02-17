@@ -1,12 +1,13 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Tab1Screen from '../screens/Tab1Screen';
-import Tab2Screen from '../screens/Tab2Screen';
+// import Tab2Screen from '../screens/Tab2Screen';
 import StackNavigator from './StackNavigator';
 import {colors} from '../themes/appTheme';
 import {Platform, Text} from 'react-native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import TopTabNavigator from './TopTabNavigator';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tabs = () => {
   return Platform.OS === 'ios' ? <TabsIOS /> : <TabsAndroid />;
@@ -26,16 +27,16 @@ const TabsAndroid = () => {
           let iconName: string = '';
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1';
+              iconName = 'airplane-outline';
               break;
             case 'Tab2Screen':
-              iconName = 'T2';
+              iconName = 'game-controller-outline';
               break;
             case 'StackNavigator':
-              iconName = 'ST';
+              iconName = 'happy-outline';
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>;
+          return <Icon name={iconName} size={20} color={color} />;
         },
       })}>
       <BottomTabAndroid.Screen
@@ -81,16 +82,16 @@ const TabsIOS = () => {
           let iconName: string = '';
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1';
+              iconName = 'airplane-outline';
               break;
             case 'Tab2Screen':
-              iconName = 'T2';
+              iconName = 'game-controller-outline';
               break;
             case 'StackNavigator':
-              iconName = 'ST';
+              iconName = 'happy-outline';
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>;
+          return <Icon name={iconName} size={20} color={color} />;
         },
       })}>
       <BottomTabIOS.Screen

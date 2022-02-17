@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import {styles} from '../themes/appTheme';
 import Tabs from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const LateralMenu = () => {
   const Drawer = createDrawerNavigator();
@@ -49,15 +50,17 @@ const InternalMenu = ({navigation}: DrawerContentComponentProps) => {
       {/* Options Menu */}
       <View style={styles.menuContainer}>
         <TouchableOpacity
-          style={styles.buttonMenu}
+          style={{...styles.buttonMenu, flexDirection: 'row'}}
           onPress={() => navigation.navigate('Tabs')}>
-          <Text style={styles.textMenu}>Navigation</Text>
+          <Icon name="compass-outline" size={25} color="black" />
+          <Text style={styles.textMenu}> Navigation</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.buttonMenu}
+          style={{...styles.buttonMenu, flexDirection: 'row'}}
           onPress={() => navigation.navigate('SettingsScreen')}>
-          <Text style={styles.textMenu}>Settings</Text>
+          <Icon name="cog-outline" size={25} color="black" />
+          <Text style={styles.textMenu}> Settings</Text>
         </TouchableOpacity>
       </View>
     </DrawerContentScrollView>
