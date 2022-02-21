@@ -7,7 +7,7 @@ const Tab1Screen = () => {
   return (
     <View style={styles.globalMargin}>
       <Text style={styles.title}>Íconos</Text>
-      <Text>
+      <Text style={{flexDirection: 'row'}}>
         <TouchableIcon iconName="airplane-outline" />
         <TouchableIcon iconName="at-outline" />
         <TouchableIcon iconName="battery-charging-outline" />
