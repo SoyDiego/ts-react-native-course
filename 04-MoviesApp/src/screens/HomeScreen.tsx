@@ -1,12 +1,11 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import React, {useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 import movieDB from '../api/movieDB';
+import {MovieDBNowPlaying} from '../interfaces/movieInterface';
 
 const HomeScreen = () => {
   useEffect(() => {
-    movieDB.get('/now_playing').then(response => {
+    movieDB.get<MovieDBNowPlaying>('/now_playing').then(response => {
       console.log(response.data.results);
     });
   }, []);
