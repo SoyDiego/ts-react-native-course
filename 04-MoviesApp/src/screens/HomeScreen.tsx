@@ -1,4 +1,11 @@
-import {View, Text, ActivityIndicator, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  Dimensions,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-snap-carousel';
 import useMovies from '../hooks/useMovies';
@@ -20,19 +27,53 @@ const HomeScreen = () => {
   }
 
   return (
-    <View style={{marginTop: top + 20}}>
-      {/* <MoviePoster movie={moviesInCinema[0]} /> */}
-      <View style={{height: 440}}>
-        <Carousel
-          autoplay={true}
-          autoplayInterval={3000}
-          data={moviesInCinema}
-          renderItem={({item}) => <MoviePoster movie={item} />}
-          sliderWidth={windowWidth}
-          itemWidth={300}
-        />
+    <ScrollView>
+      <View style={{marginTop: top + 20}}>
+        <View style={{height: 440}}>
+          {/* Principal Carousel */}
+          <Carousel
+            autoplay={true}
+            autoplayInterval={3000}
+            data={moviesInCinema}
+            renderItem={({item}) => <MoviePoster movie={item} />}
+            sliderWidth={windowWidth}
+            itemWidth={300}
+          />
+        </View>
+
+        {/* Popular Movies Carousel */}
+        <View style={{backgroundColor: 'red', height: 260}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
+            Popular Movies
+          </Text>
+          <FlatList
+            data={moviesInCinema}
+            renderItem={({item}) => (
+              <MoviePoster movie={item} width={140} height={200} />
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={item => item.id.toString()}
+          />
+        </View>
+
+        {/* Popular Movies Carousel */}
+        <View style={{backgroundColor: 'red', height: 260}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
+            Popular Movies
+          </Text>
+          <FlatList
+            data={moviesInCinema}
+            renderItem={({item}) => (
+              <MoviePoster movie={item} width={140} height={200} />
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={item => item.id.toString()}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
