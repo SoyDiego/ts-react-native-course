@@ -1,9 +1,4 @@
-import {
-  View,
-  ActivityIndicator,
-  Dimensions,
-  ScrollView,
-} from 'react-native';
+import {View, ActivityIndicator, Dimensions, ScrollView} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-snap-carousel';
 import useMovies from '../hooks/useMovies';
@@ -13,7 +8,7 @@ import HorizontalSlider from '../components/HorizontalSlider';
 
 const HomeScreen = () => {
   const {width: windowWidth} = Dimensions.get('window');
-  const {moviesInCinema, isLoading} = useMovies();
+  const {moviesInCinema, popularMovies, isLoading} = useMovies();
 
   const {top} = useSafeAreaInsets();
 
@@ -40,7 +35,8 @@ const HomeScreen = () => {
         </View>
 
         {/* Popular Movies Carousel */}
-        <HorizontalSlider title="Popular Movies" movies={moviesInCinema} />
+        <HorizontalSlider title="On Cinema" movies={moviesInCinema} />
+        <HorizontalSlider title="Popular" movies={popularMovies} />
       </View>
     </ScrollView>
   );
