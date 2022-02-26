@@ -1,9 +1,7 @@
 import {
   View,
-  Text,
   ActivityIndicator,
   Dimensions,
-  FlatList,
   ScrollView,
 } from 'react-native';
 import React from 'react';
@@ -11,6 +9,7 @@ import Carousel from 'react-native-snap-carousel';
 import useMovies from '../hooks/useMovies';
 import MoviePoster from '../components/MoviePoster';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import HorizontalSlider from '../components/HorizontalSlider';
 
 const HomeScreen = () => {
   const {width: windowWidth} = Dimensions.get('window');
@@ -32,46 +31,16 @@ const HomeScreen = () => {
         <View style={{height: 440}}>
           {/* Principal Carousel */}
           <Carousel
-            autoplay={true}
-            autoplayInterval={3000}
             data={moviesInCinema}
             renderItem={({item}) => <MoviePoster movie={item} />}
             sliderWidth={windowWidth}
             itemWidth={300}
+            inactiveSlideOpacity={0.8}
           />
         </View>
 
         {/* Popular Movies Carousel */}
-        <View style={{backgroundColor: 'red', height: 260}}>
-          <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
-            Popular Movies
-          </Text>
-          <FlatList
-            data={moviesInCinema}
-            renderItem={({item}) => (
-              <MoviePoster movie={item} width={140} height={200} />
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={item => item.id.toString()}
-          />
-        </View>
-
-        {/* Popular Movies Carousel */}
-        <View style={{backgroundColor: 'red', height: 260}}>
-          <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
-            Popular Movies
-          </Text>
-          <FlatList
-            data={moviesInCinema}
-            renderItem={({item}) => (
-              <MoviePoster movie={item} width={140} height={200} />
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={item => item.id.toString()}
-          />
-        </View>
+        <HorizontalSlider title="Popular Movies" movies={moviesInCinema} />
       </View>
     </ScrollView>
   );
