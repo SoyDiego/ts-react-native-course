@@ -20,7 +20,7 @@ const useMoviesDetails = (movieId: number) => {
     const movieDetailsPromise = movieDB.get<FullMovie>(`/${movieId}`);
     const castingPromise = movieDB.get<CreditsResponse>(`/${movieId}/credits`);
 
-    const [movieDetailsResponse, castingResponse] = Promise.all([
+    const [movieDetailsResponse, castingResponse] = await Promise.all([
       movieDetailsPromise,
       castingPromise,
     ]);
