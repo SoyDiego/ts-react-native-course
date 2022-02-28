@@ -19,7 +19,8 @@ const screenHeight = Dimensions.get('window').height;
 const DetailScreen = ({route}: DetailProps) => {
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  useMoviesDetails(movie.id);
+
+  const {isLoading, cast, fullMovie} = useMoviesDetails(movie.id);
 
   return (
     <ScrollView>
