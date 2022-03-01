@@ -1,5 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
+import currencyFormatter from 'currency-formatter';
 import {FullMovie} from '../interfaces/movieInterface';
 import {Cast} from '../interfaces/creditsInterface';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,8 +22,16 @@ const MovieDetails = ({fullMovie, cast}: MovieDetailsProps) => {
             - {fullMovie.genres.map(genre => genre.name).join(', ')}
           </Text>
         </View>
+        <Text style={{marginTop: 10, fontSize: 20, fontWeight: 'bold'}}>
+          History
+        </Text>
+        <Text>{fullMovie.overview}</Text>
+
+        <Text style={{marginTop: 10, fontSize: 20, fontWeight: 'bold'}}>
+          Budget
+        </Text>
+        <Text>{currencyFormatter.format(fullMovie.budget, {code: 'USD'})}</Text>
       </View>
-      <Text>{fullMovie.overview}</Text>
     </>
   );
 };
