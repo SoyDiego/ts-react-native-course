@@ -26,19 +26,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'white',
     borderRadius: 10,
-    shadow: {
-      borderRadius: 10,
-      flex: 1,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 12,
-      },
-      shadowOpacity: 0.9,
-      shadowRadius: 16.0,
-
-      elevation: 12,
+    flex: 1,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
     },
+    shadowOpacity: 0.9,
+    shadowRadius: 16.0,
+
+    elevation: 12,
   },
   actorInfo: {
     marginLeft: 10,

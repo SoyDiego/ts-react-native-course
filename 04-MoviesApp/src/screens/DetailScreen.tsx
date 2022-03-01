@@ -64,19 +64,17 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
     height: screenHeight * 0.7,
-    shadow: {
-      borderRadius: 10,
-      flex: 1,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 12,
-      },
-      shadowOpacity: 0.24,
-      shadowRadius: 7.0,
-
-      elevation: 12,
+    borderRadius: 10,
+    flex: 1,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
     },
+    shadowOpacity: 0.9,
+    shadowRadius: 16.0,
+
+    elevation: 12,
   },
   imageBorder: {
     flex: 1,
