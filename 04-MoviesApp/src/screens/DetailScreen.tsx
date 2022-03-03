@@ -10,7 +10,6 @@ import {
 import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParams} from '../Navigation/Navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
 import useMoviesDetails from '../hooks/useMoviesDetails';
 import MovieDetails from '../components/MovieDetails';
 
